@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+  <div class="col col-lg-9">
+
+    <h1 class="my-5 text-center text-standard">
+      <%= md :intro %>
+    </h1>
+
+    <h4 class="text-standard text-center mt-5">Subscribe for updates</h2>
+    <iframe src="https://paragraph.xyz/@metacrisisxyz/embed?minimal=true" id="paragraph"></iframe>
+
+  </div>
+</div>
+
+<p class="lead">
+  <%= md :telegram %>
+</p>
+
+<div class="row">
+
+  <% Contributor.all.shuffle.each { |contributor| %>
+
+  <div class="col-4 col-lg-2">
+    <style>
+      .headshot { filter: grayscale(100%);  transition: filter 0.5s ease; }
+      .headshot:hover { filter: grayscale(0%); }
+    </style>
+    <% if contributor['Website'] %>
+      <a target="_blank" href="<%= contributor['Website'] %>">
+        <img class="headshot w-100" src="<%= contributor['Headshot'].first['url'] %>" />
+      </a>
+    <% else %>
+      <img class="headshot w-100" src="<%= contributor['Headshot'].first['url'] %>" />
+    <% end %>
+    <div>
+      <h5 class="my-1"><%= contributor['Name'] %></h5>
+      <p class="my-1"><%=contributor['Organisation(s)']%></p>
+      <div style="font-size: 1.5em" class="mb-1">
+        <% if contributor['Telegram username'] %>
+          <a target="_blank" href="https://t.me/<%= contributor['Telegram username'].gsub('@','') %>"><i class="fa fa-telegram"></i></a>
+        <% end %>
+        <% if contributor['Twitter username'] %>
+          <a target="_blank" href="https://twitter.com/<%= contributor['Twitter username'].gsub('@','') %>"><i class="fa fa-twitter"></i></a>
+        <% end %>
+        <% if contributor['Website'] %>
+          <a target="_blank" href="<%= contributor['Website'] %>"><i class="fa fa-link"></i></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% } %>
+
+</div>

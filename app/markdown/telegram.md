@@ -1,0 +1,1 @@
+We coordinate via a private Telegram group with ~50 members, some of which are shown below. <br class="d-none d-lg-inline"/> If you'd like to join, ask an existing member to nominate you.

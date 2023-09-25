@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+      <!-- opengraph tags -->
+      <meta property="og:title" content="metacrisis.xyz">
+      <meta property="og:image" content="https://metacrisis.xyz/og.png">
+      <meta property="og:url" content="https://metacrisis.xyz">
+      <meta property="og:type" content="website">
+
+      <% {            
+      'jquery/3.2.0' => 'jquery.min.js',
+      'popper.js/1.11.0' => 'umd/popper.min.js',
+      'twitter-bootstrap/4.0.0-beta' => 'js/bootstrap.min.js',
+      'font-awesome/4.7.0' => 'css/font-awesome.min.css',
+      'select2/4.0.3' => 'js/select2.min.js css/select2.min.css',
+      'codemirror/5.0.0' => 'codemirror.min.css theme/monokai.min.css codemirror.min.js mode/xml/xml.min.js',
+      'jquery-timeago/1.4.3' => 'jquery.timeago.min.js',      
+      'flatpickr/3.0.7' => 'flatpickr.min.js flatpickr.min.css'
+      }.each { |k,v| %>
+      <% v.split(' ').each { |f| u = "https://cdnjs.cloudflare.com/ajax/libs/#{k}/#{f}" %>
+      <% case f.split('.').last.to_sym; when :js %>
+      <script src="<%=u%>"></script>
+      <% when :css %>
+      <link rel="stylesheet" href="<%=u%>" />
+    <% end %>
+    <% } %>
+    <% } %>
+
+    <% [
+      '/stylesheets/share.css',
+      "/stylesheets/app.css?#{Time.now.to_i}"
+      ].each { |f| %>
+    <link rel="stylesheet" href="<%=f%>" />
+    <% } %>
+
+    <% [
+      "//maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_MAPS_API_KEY']}",
+      '//rawcdn.githack.com/wordsandwriting/activate-tools/f39002fcc10a9a554c651543b3065847130c2811/js/jquery.geopicker.js',      
+      "//rawcdn.githack.com/wordsandwriting/activate-tools/7a73525b76c8234a4803e3196b4403ec6fd6ded7/js/textboxio/textboxio.js",      
+      "/javascripts/app.js?#{Time.now.to_i}",
+      '//rawcdn.githack.com/wordsandwriting/activate-tools/6681c1667d3fb4e28b2e31f2771a7c6d68392c97/js/pagelets.js'      
+      ].each { |f| %>
+    <script src="<%=f%>"></script>
+    <% } %>
+
+    <%= favicon_tag 'favicon.png' %>
+    <title><%=@title%></title>
+    <meta name="description" content="<%=@og_desc%>">
+    <meta property="og:title" content="<%=@title%>" />
+    <meta property="og:image" content="<%=@og_image%>" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%=@title%>">
+    <meta name="twitter:description" content="<%=@og_desc%>">
+    <meta name="twitter:image" content="<%=@og_image%>">
+
+  </head>
+  <body>
+
+    <%= partial :alert %>
+    <%= partial :nav %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

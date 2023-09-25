@@ -1,0 +1,112 @@
+$primary: #6f42c1;
+$font-family-sans-serif: 'DM Mono', sans-serif;
+$body-bg: #202020;
+$body-color: #c4cbd4;
+$code-color: #C5636C;
+$font-size-base: 1rem;
+$lead-font-size: (
+  $font-size-base * 1.1
+);
+@import "bootstrap/bootstrap";
+$highlight-color: #E5C07C;
+$contrast-color: white;
+
+.dropdown-menu {
+  overflow-y: auto;
+  max-height: 50vh
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: $body-color
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: $contrast-color
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $contrast-color
+}
+
+p.lead {
+  color: $contrast-color
+}
+
+th {
+  color: $contrast-color
+}
+
+.text-contrast {
+  color: $contrast-color !important
+}
+
+.text-contrast:hover {
+  color: $contrast-color !important
+}
+
+.text-standard {
+  color: $body-color !important
+}
+
+.text-standard:hover {
+  color: $body-color !important
+}
+
+.bg-standard {
+  background: $body-bg !important
+}
+
+mark,
+.mark {
+  color: $body-color;
+  text-decoration: underline;
+  text-decoration-color: $highlight-color;
+  text-decoration-thickness: 0.075em;
+  background: none;
+}
+
+h1 mark,
+h1 .mark {
+  color: $contrast-color;
+}
+
+
+
+
+#paragraph {
+  width: 100%;
+  height: 80px;
+  border: 0;
+}
+
+.rainbow {
+  background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 10s ease-in-out infinite;
+  background-size: 400% 100%;
+}
+
+@media(min-width: 992px) {
+  .rainbow {
+    letter-spacing: 0.15em;
+  }
+}
+
+@keyframes rainbow_animation {
+
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
+}
