@@ -19,7 +19,7 @@
 
   <% Contributor.all(filter: '{Verified} = 1', sort: { 'Order' => 'asc' }).each { |contributor| %>
 
-  <div class="col-4 col-lg-2">
+  <div class="col-6 col-lg-2">
     <style>
       .headshot { filter: grayscale(100%);  transition: filter 0.5s ease; }
       .headshot:hover { filter: grayscale(0%); }
