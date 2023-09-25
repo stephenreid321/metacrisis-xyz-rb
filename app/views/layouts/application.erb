@@ -10,11 +10,23 @@
     href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
     rel="stylesheet">
 
-      <!-- opengraph tags -->
-      <meta property="og:title" content="metacrisis.xyz">
-      <meta property="og:image" content="https://metacrisis.xyz/og.png">
-      <meta property="og:url" content="https://metacrisis.xyz">
-      <meta property="og:type" content="website">
+      <title><%= t = if @full_title
+                   @full_title
+                 elsif @title
+                   "#{@title} · metacrisis.xyz"
+                 else
+                   'metacrisis.xyz'
+                 end %></title>
+      <meta property="og:title" content="<%= t %>">
+      <meta name="description" content="<%= @og_desc %>">
+      <meta property="og:image" content="<%= @og_image %>">
+
+      <% if @og_image && @og_desc %>
+        <meta name="twitter:title" content="<%= t %>">
+        <meta name="twitter:description" content="<%= @og_desc %>">
+        <meta name="twitter:image" content="<%= @og_image %>">
+        <meta name="twitter:card" content="summary_large_image">
+      <% end %>
 
       <% {            
       'jquery/3.2.0' => 'jquery.min.js',

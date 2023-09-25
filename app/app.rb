@@ -6,6 +6,9 @@ module ActivateApp
     helpers Activate::ParamHelpers
     helpers Activate::NavigationHelpers
 
+    register Padrino::Cache
+    enable :caching unless Padrino.env == :development
+
     require 'sass/plugin/rack'
     Sass::Plugin.options[:template_location] = Padrino.root('app', 'assets', 'stylesheets')
     Sass::Plugin.options[:css_location] = Padrino.root('app', 'assets', 'stylesheets')
@@ -35,8 +38,13 @@ module ActivateApp
 
     before do
       redirect "#{ENV['BASE_URI']}#{request.path}#{"?#{request.query_string}" unless request.query_string.blank?}" if ENV['REDIRECT_BASE'] && ENV['BASE_URI'] && (ENV['BASE_URI'] != "#{request.scheme}://#{request.env['HTTP_HOST']}")
+      if params[:r]
+        StephenReid::App.cache.clear
+        redirect request.path
+      end
       Time.zone = current_account.time_zone if current_account and current_account.time_zone
       fix_params!
+      @og_image = "https://api.apiflash.com/v1/urltoimage?access_key=#{ENV['APIFLASH_KEY']}&url=#{ENV['BASE_URI']}#{request.path}&width=1280&height=672&ttl=2592000" unless Padrino.env == :development
     end
 
     error do
@@ -48,7 +56,8 @@ module ActivateApp
       erb :not_found, layout: :application
     end
 
-    get '/' do
+    get '/', cache: true do
+      @og_desc = 'A collective of technology experts exploring wise responses to the metacrisis'
       erb :home
     end
 
