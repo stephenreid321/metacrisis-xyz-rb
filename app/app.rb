@@ -42,7 +42,7 @@ module ActivateApp
         StephenReid::App.cache.clear
         redirect request.path
       end
-      Time.zone = current_account.time_zone if current_account and current_account.time_zone
+      Time.zone = current_account && current_account.time_zone ? current_account.time_zone : 'London'
       fix_params!
       @og_image = "https://api.apiflash.com/v1/urltoimage?access_key=#{ENV['APIFLASH_KEY']}&url=#{ENV['BASE_URI']}#{request.path}&width=1280&height=672&ttl=2592000" unless Padrino.env == :development
     end
@@ -58,6 +58,13 @@ module ActivateApp
 
     get '/', cache: true do
       @og_desc = 'A collective of technology experts exploring wise responses to the metacrisis'
+
+      @posts = Post.all(filter: "AND(
+        IS_AFTER({Created at}, '#{3.months.ago.to_s(:db)}'),
+        {metacrisis.xyz} = 1,
+        FIND('\"url\": ', {Iframely}) > 0
+      )", sort: { 'Created at' => 'desc' }, paginate: false)
+
       erb :home
     end
 

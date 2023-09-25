@@ -61,20 +61,6 @@ th {
   background: $body-bg !important
 }
 
-mark,
-.mark {
-  padding: 0;
-  color: $body-color;
-  text-decoration: underline;
-  text-decoration-color: $highlight-color;
-  text-decoration-thickness: 0.075em;
-  background: none;
-}
-
-h1 mark,
-h1 .mark {
-  color: $contrast-color;
-}
 
 
 
@@ -110,4 +96,193 @@ h1 .mark {
   50% {
     background-position: 100% 0;
   }
+}
+
+
+
+
+code,
+pre code {
+  color: $code-color
+}
+
+mark,
+.mark {
+  color: $body-color;
+  text-decoration: underline;
+  text-decoration-color: $highlight-color;
+  text-decoration-thickness: 0.075em;
+  background: none;
+}
+
+h1 mark,
+h1 .mark {
+  color: $contrast-color;
+}
+
+blockquote {
+  border-left: 0.3em solid $gray-300;
+  padding-left: 1em;
+  font-style: italic
+}
+
+blockquote footer {
+  font-size: 1rem !important
+}
+
+body,
+small {
+  font-weight: 300
+}
+
+.form-control {
+  font-weight: 300
+}
+
+b,
+strong {
+  font-weight: 600
+}
+
+small {
+  font-size: 90%
+}
+
+.dropdown-item {
+  font-weight: 300
+}
+
+.dropdown-item.active {
+  font-weight: bold
+}
+
+.text-sm,
+.text-sm p {
+  font-size: 90% !important;
+  line-height: 1.2rem !important
+}
+
+p.attribution {
+  text-align: right;
+  font-size: 0.95rem !important
+}
+
+
+.badge-warning {
+  color: white
+}
+
+
+
+
+
+
+blockquote {
+  border-left: 0.3em solid white;
+}
+
+$bg-dark: darken($body-bg, 5%);
+
+.bg-dark {
+  background-color: $bg-dark !important;
+}
+
+.card {
+  background-color: $bg-dark
+}
+
+.table th,
+.table td {
+  border-color: $bg-dark
+}
+
+$dark-color: #343a40;
+
+.modal h1,
+.modal h2,
+.modal h3,
+.modal h4,
+.modal h5,
+.modal h6 {
+  color: $dark-color
+}
+
+.modal p.lead {
+  color: $dark-color
+}
+
+.dropdown-menu {
+  background-color: $body-bg
+}
+
+.dropdown-item {
+  color: $body-color
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: $contrast-color;
+  background-color: $body-bg
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $body-bg
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #B7BEC8;
+}
+
+.badge {
+  font-weight: normal
+}
+
+.btn-secondary {
+  background-color: lighten($body-bg, 15%);
+  border-color: lighten($body-bg, 15%);
+}
+
+.btn-secondary:hover {
+  background-color: lighten($body-bg, 10%);
+  border-color: lighten($body-bg, 10%);
+}
+
+.badge-secondary {
+  background-color: lighten($body-bg, 15%);
+}
+
+.text-muted {
+  color: darken($body-color, 20%) !important
+}
+
+.blockquote-footer {
+  color: darken($body-color, 20%) !important
+}
+
+mark {
+  padding-left: 0;
+  padding-right: 0
+}
+
+.page-link,
+.page-item.disabled .page-link {
+  background-color: $body-bg;
+  border: 1px solid darken($body-bg, 10%);
+}
+
+.page-link:hover,
+.page-item.active .page-link {
+  background-color: darken($body-bg, 10%);
+  border: 1px solid darken($body-bg, 10%);
+}
+
+.page-link:focus {
+  box-shadow: none;
+}
+
+.breadcrumb-item+.breadcrumb-item::before,
+.breadcrumb-item.active {
+  color: darken($body-color, 25%)
 }
