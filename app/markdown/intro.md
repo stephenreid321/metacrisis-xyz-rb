@@ -1,2 +1,2 @@
-A collective of <br class="d-lg-none"/>==technology experts== <br />
+<span class="d-lg-none">A collective of</span><span class="d-none d-lg-inline">We're a collective of</span> <br class="d-lg-none"/>==technology experts== <br />
 exploring <br class="d-lg-none"/>==wise responses to the metacrisis==
