@@ -54,14 +54,10 @@
 
 </div>
 
-<h1 class="text-center mt-5">Recent inspiration</h1>
 
-<div class="row mt-5">
-  <% if @posts.empty? %>
-    <div class="col-12">
-      <em>No results</em>
-    </div>
-  <% else %>
+<% if !@posts.empty? %>
+  <h1 class="text-center mt-5">Recent inspiration</h1>
+  <div class="row mt-5">
     <% @posts.each { |post|
     json = JSON.parse(post['Iframely'])
     next unless json['links'] %>
@@ -69,5 +65,5 @@
       <%= partial :post, locals: { post: post, json: json } %>
     </div>
     <% } %>
-  <% end %>
-</div>
+  </div>
+<% end %>
