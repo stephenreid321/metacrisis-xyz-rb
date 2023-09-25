@@ -1,7 +1,11 @@
 <div class="row justify-content-center">
   <div class="col col-lg-9">
 
-    <h1 class="my-5 text-center text-standard">
+
+    <style>
+      @media(max-width: 767px) { h1.intro { font-size: 1.9rem } }
+    </style>
+    <h1 class="intro my-5 text-center text-standard">
       <%= md :intro %>
     </h1>
 
@@ -11,9 +15,7 @@
   </div>
 </div>
 
-<p class="lead">
-  <%= md :telegram %>
-</p>
+<%= md :telegram %>
 
 <div class="row">
 
