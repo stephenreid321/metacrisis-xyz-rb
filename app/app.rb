@@ -57,6 +57,7 @@ module ActivateApp
     end
 
     get '/', cache: true do
+      expires 1.hour.to_i
       @og_desc = 'A collective of technology experts exploring wise responses to the metacrisis'
 
       @posts = Post.all(filter: "AND(
