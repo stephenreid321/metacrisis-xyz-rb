@@ -39,7 +39,7 @@ module ActivateApp
     before do
       redirect "#{ENV['BASE_URI']}#{request.path}#{"?#{request.query_string}" unless request.query_string.blank?}" if ENV['REDIRECT_BASE'] && ENV['BASE_URI'] && (ENV['BASE_URI'] != "#{request.scheme}://#{request.env['HTTP_HOST']}")
       if params[:r]
-        StephenReid::App.cache.clear
+        ActivateApp::App.cache.clear
         redirect request.path
       end
       Time.zone = current_account && current_account.time_zone ? current_account.time_zone : 'London'
