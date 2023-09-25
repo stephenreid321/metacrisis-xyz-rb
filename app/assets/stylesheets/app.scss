@@ -78,13 +78,9 @@ th {
   color: transparent;
   animation: rainbow_animation 10s ease-in-out infinite;
   background-size: 400% 100%;
+  letter-spacing: 0.15em;
 }
 
-@media(min-width: 992px) {
-  .rainbow {
-    letter-spacing: 0.15em;
-  }
-}
 
 @keyframes rainbow_animation {
 

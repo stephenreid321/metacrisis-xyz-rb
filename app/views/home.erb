@@ -36,7 +36,7 @@
     <div>
       <h5 class="my-1"><%= contributor['Name'] %></h5>
       <p class="my-1"><%=contributor['Organisation(s)']%></p>
-      <div style="font-size: 1.5em" class="mb-1">
+      <div style="font-size: 1.5em" class="mb-2">
         <% if contributor['Telegram username'] %>
           <a target="_blank" href="https://t.me/<%= contributor['Telegram username'].gsub('@','') %>"><i class="fa fa-telegram"></i></a>
         <% end %>
