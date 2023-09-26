@@ -3,7 +3,8 @@
 
 
     <style>
-      @media(max-width: 767px) { h1.intro { font-size: 2rem } }
+      h1.intro { font-size: 4.5vw }
+      @media(min-width: 992px) { h1.intro { font-size: 2.8vw } }
     </style>
     <h1 class="intro my-5 text-center text-standard">
       <%= md :intro %>
@@ -19,7 +20,7 @@
 
 <div class="row">
 
-  <% Contributor.all(filter: '{Verified} = 1', sort: { 'Order' => 'asc' }).each { |contributor| %>
+  <% Contributor.all(filter: '{Verified} = 1').sort_by { |contributor| contributor['Order'] ? contributor['Order'] : 999 }.each { |contributor| %>
 
   <div class="col-6 col-lg-2">
     <style>
