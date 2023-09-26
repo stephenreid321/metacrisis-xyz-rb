@@ -19,7 +19,7 @@
 
 <div class="row">
 
-  <% Contributor.all(filter: '{Verified} = 1').sort_by { |contributor| contributor['Order'] ? contributor['Order'] : 999 }.each { |contributor| %>
+  <% Contributor.all(filter: '{Verified} = 1').sort_by { |contributor| contributor['Order'] ? contributor['Order'] : 999 + rand }.each { |contributor| %>
 
   <div class="col-6 col-lg-2">
     <style>
