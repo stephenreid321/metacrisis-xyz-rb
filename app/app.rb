@@ -61,7 +61,7 @@ module ActivateApp
       @og_desc = 'A collective of technology experts exploring wise responses to the metacrisis'
 
       @posts = Post.all(filter: "AND(
-        IS_AFTER({Created at}, '#{3.months.ago.to_s(:db)}'),
+        IS_AFTER({Created at}, '#{1.year.ago.to_s(:db)}'),
         {metacrisis.xyz} = 1,
         FIND('\"url\": ', {Iframely}) > 0
       )", sort: { 'Created at' => 'desc' }, paginate: false)
